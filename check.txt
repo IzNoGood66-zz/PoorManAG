@@ -1,0 +1,25 @@
+CURSOR
+SELECT ag.name , d.name FROM sys.databases d
+              INNER JOIN sys.dm_hadr_availability_replica_states hars
+                ON d.replica_id = hars.replica_id
+              INNER JOIN sys.availability_groups ag
+                ON hars.group_id = ag.group_id
+              WHERE hars.role_desc = 'PRIMARY' and ag.name like '%_master'
+
+while cursor
+DECLARE @SQL varchar(max)
+SELECT @SQL = COALESCE(@SQL,'') + CHAR(13) + CHAR(10) +
+             'ALTER AVAILABILITY GROUP [' + ag.name + '] FAILOVER;'
+              FROM sys.databases d
+              INNER JOIN sys.dm_hadr_availability_replica_states hars
+                ON d.replica_id = hars.replica_id
+              INNER JOIN sys.availability_groups ag
+                ON ag.group_id = hars.group_id
+              WHERE hars.role_desc <> 'PRIMARY' and ag.name <> agmaster  and ag.name like @ag%
+ 
+SELECT @sql
+EXEC (@sql)
+end while                        
+
+
+Et job der tester om master er primær på noden, hvis den er checkes om tilhørende databaser er sekundær og de laver failover.
