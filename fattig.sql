@@ -4,12 +4,12 @@
   jjo@miracle.dk
   +45 53 74 71 23
 
-  Failover skal udføres p� serveren. hvor AG er sekund�r.
-  Derfor skal dette oprettes som job p� begge servere.
+  Failover skal udføres på serveren. hvor AG er sekundær.
+  Derfor skal dette oprettes som job på begge servere.
 
-  Det virker s�ledes.
+  Det virker således.
 
-  Der oprettes en AG som er master for en gruppe, denne f�r en Listner, denne AG beh�ver ikke at indeholde en database.
+  Der oprettes en AG som er master for en gruppe, denne før en Listner, denne AG behøver ikke at indeholde en database.
   de andre ag skal prefikses med samme navn, men f�r ikke en Listner.
   hvis der skal v�re l�sbart sekund�r oprettes der en snapshot ag med egen Listner
   
