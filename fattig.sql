@@ -11,7 +11,7 @@
 
   Der oprettes en AG som er master for en gruppe, denne før en Listner, denne AG behøver ikke at indeholde en database.
   de andre ag skal prefikses med samme navn, men f�r ikke en Listner.
-  hvis der skal v�re l�sbart sekund�r oprettes der en snapshot ag med egen Listner
+  hvis der skal være l�sbart sekund�r oprettes der en snapshot ag med egen Listner
   
   eks.
   AG1_master - har Listner
